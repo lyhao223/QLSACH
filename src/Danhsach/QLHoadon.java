@@ -1,6 +1,6 @@
 package Danhsach;
 
-import Thuoctinh.Khachhang;
+import Thuoctinh.Hoadon;
 import Chuongtrinh.main;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class QLKhachhang {
+public class QLHoadon {
     QLDanhsach ql = new QLDanhsach();
     Scanner sc = new Scanner(System.in);
      public void menu() throws IOException  {
@@ -18,9 +18,9 @@ public class QLKhachhang {
             System.out.println();
             System.out.println("            QUẢN LÝ KHÁCH HÀNG");
             System.out.println("-------------------***-------------------");
-            System.out.println("|   1. Thêm khách hàng.                 |");
+            System.out.println("|   1. Thêm hoá đơn.                    |");
             System.out.println("|   2. Sửa thông tin.                   |");
-            System.out.println("|   3. Xóa người khách hàng.            |");
+            System.out.println("|   3. Xóa hoá đơn.                     |");
             System.out.println("|   4. Xem danh sách.                   |");
             System.out.println("|   5. Tìm kiếm.                        |");
             System.out.println("|   6. Ghi File.                        |");
@@ -57,31 +57,31 @@ public class QLKhachhang {
                     break;
             }
 
-            System.out.println("\n---------------------KẾT THÚC MENU QUẢN LÝ NGƯỜI MƯỢN------------------\n");
+            System.out.println("\n---------------------KẾT THÚC MENU QUẢN LÝ HOÁ ĐƠN------------------\n");
         } while (true);
     }
      
       public void them(){
-          System.out.println("Nhập số lượng khách hàng cần nhập:");          
+          System.out.println("Nhập số lượng hoá đơn cần nhập:");          
           int n;
           n=Integer.parseInt(sc.nextLine());
           for(int i=0;i<n;i++){             
-              Khachhang khk = new Khachhang();
-                  khk.nhap();
-                  ql.kh.add(khk);
+              Hoadon hdd = new Hoadon();
+                  hdd.nhap();
+                  ql.hd.add(hdd);
               }
                   
           }
 
       public void sua(){
-          System.out.println("Nhập mã khách hàng: ");
+          System.out.println("Nhập mã hoá đơn: ");
           String str = sc.nextLine();
-          for(int i=0;i<ql.kh.size();i++){
-              if(str.compareTo(ql.kh.get(i).getmaNguoiMuon())==0){
-                  ql.kh.get(i).nhap();
+          for(int i=0;i<ql.hd.size();i++){
+              if(str.compareTo(ql.hd.get(i).getmaHoaDon())==0){
+                  ql.hd.get(i).nhap();
                   System.out.println("Sửa thành công");
               }else{
-                  System.out.println("Không tìm thấy khách hàng");
+                  System.out.println("Không tìm thấy hoá đơn");
                   break;
               }
           }
@@ -90,57 +90,61 @@ public class QLKhachhang {
       
       public void xoa(){
           
-          System.out.println("Nhập mã khách hàng: ");
+          System.out.println("Nhập mã hoá đơn: ");
           String str = sc.nextLine();
-          for(int i=0;i<ql.kh.size();i++){
-              if(str.compareTo(ql.kh.get(i).getmaNguoiMuon())==0){
-                  ql.kh.remove(i);
+          for(int i=0;i<ql.hd.size();i++){
+              if(str.compareTo(ql.hd.get(i).getmaHoaDon())==0){
+                  ql.hd.remove(i);
                   System.out.println("Xóa thành công");
               }else{
-                  System.out.println("Không tìm thấy khách hàng");
+                  System.out.println("Không tìm thấy hoá đơn");
               }
           }
       }
       
       public void xemDanhSach(){
-          System.out.println("Dánh sách khách hàng: ");
-          System.out.printf("%-15s | %-15s | %-15S | %-15s|\n\n",
-                "Mã khách hàng",
+          System.out.println("Dánh sách hoá đơn: ");
+          System.out.printf("%-15s | %-15s | %-15S | %-15s| %-15s| %-15s| \n\n",
+                "Mã hoá đơn",
                 "Tên khách hàng ",
-                "Địa chỉ",
-                "Số điện thoại");
+                "Số lượng",
+                "Tên Sách",
+                "Tổng tiền",
+                "Ngày bán");
                
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-          for(int i=0;i<ql.kh.size();i++){
-              ql.kh.get(i).xuat();
+          for(int i=0;i<ql.hd.size();i++){
+              ql.hd.get(i).xuat();
           }
           
       }
       
       public void timKiem(){
           String str = sc.nextLine();
-          for(int i=0;i<ql.kh.size();i++){
-              if(str.compareTo(ql.kh.get(i).getmaNguoiMuon())==0){
-                  System.out.println("Khách hàng đã tìm thấy: ");
-                  System.out.printf("%-15s | %-15s | %-15S | %-15s|\n\n",
-                "Mã khách hàng",
+          for(int i=0;i<ql.hd.size();i++){
+              if(str.compareTo(ql.hd.get(i).getmaHoaDon())==0){
+                  System.out.println("Hoá đơn đã tìm thấy: ");
+                  System.out.printf("%-15s | %-15s | %-15S | %-15s| %-15s| %-15s|\n\n",
+                "Mã hoá đơn",
                 "Tên khách hàng ",
-                "Địa chỉ",
-                "Số điện thoại");
+                "Số lượng",
+                "Tên Sách",
+                "Tổng tiền",
+                "Ngày bán");
                
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
-                  ql.kh.get(i).xuat();
+                  ql.hd.get(i).xuat();
               }else{
-                  System.out.println("Không tìm thấy khách hàng");
+                  System.out.println("Không tìm thấy hoá đơn");
               }
           }
       }
       
       public void ghi() throws IOException{
           try {
-              FileWriter f = new FileWriter("khachhang.txt");
+              FileWriter f = new FileWriter("hoadon.txt");
               BufferedWriter b = new BufferedWriter(f);
-              for(Khachhang i : ql.kh){
+              for(Hoadon i : ql.hd){
                   b.write(i.toString());
                   b.newLine();
               }
@@ -148,11 +152,11 @@ public class QLKhachhang {
               f.close();
           } catch (Exception e) {
           }
-    }
+      }
       
-     public void doc(){
+      public void doc(){
          try {
-              FileReader f = new FileReader("khachhang.txt");
+              FileReader f = new FileReader("hoadon.txt");
               BufferedReader b = new BufferedReader(f);
               String line = "";
               while(true){
@@ -164,5 +168,7 @@ public class QLKhachhang {
               }
           } catch (Exception e) {
           }
-     }
+      }
 }
+
+

@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Thuoctinh;
 
 import java.util.Scanner;
 
-/**
- *
- * @author lyhao
- */
 public class Khachhang {
    private String maNguoiMuon, tenNguoiMuon,  diaChi, soDienThoai;
     public Khachhang() {
@@ -17,7 +9,6 @@ public class Khachhang {
         this.tenNguoiMuon = "";
         this.diaChi = "";
         this.soDienThoai = "";
-
     }
     
     public Khachhang(String maNguoiMuon,  String tenNguoiMuon, String diaChi, String soDienThoai) {
@@ -34,6 +25,7 @@ public class Khachhang {
     public void setmaNguoiMuon(String maNguoiMuon) {
         this.maNguoiMuon = maNguoiMuon;
     }
+    
     public String getTenNguoiMuon() {
         return tenNguoiMuon;
     }
